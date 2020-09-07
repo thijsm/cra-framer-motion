@@ -10,9 +10,9 @@ function Logo(props) {
 
     const colors = {
         reactBlue: "#61DAFB",
-        motionMagenta: "#E705C0",
-        motionBlue: "#116CFF",
-        motionPurple: "#6706FE",
+        motionMagenta: "#f08",
+        motionBlue: "#40f",
+        motionPurple: "#70f",
     }
 
     // This function runs an animation sequence on an oval’s AnimationControls

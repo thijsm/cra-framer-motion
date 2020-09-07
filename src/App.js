@@ -6,9 +6,9 @@ import Logo from "./Logo"
 
 function App() {
     const colors = {
-        motionMagenta: "#E705C0",
-        motionBlue: "#116CFF",
-        motionPurple: "#6706FE",
+        motionMagenta: "#f08",
+        motionBlue: "#05f",
+        motionPurple: "#70f",
     }
 
     return (
