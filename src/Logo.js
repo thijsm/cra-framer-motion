@@ -36,7 +36,7 @@ function Logo(props) {
                 pathOffset: {
                     duration: 0.5,
                     ease: "linear",
-                    loop: 1,
+                    repeat: 1,
                 },
             },
         })
@@ -69,7 +69,7 @@ function Logo(props) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 initial={{
-                    stroke: colors.reactBlue,
+                    stroke: "url(#initialColor)",
                     pathLength: 1,
                     pathOffset: 0,
                     pathSpacing: 1,
@@ -82,7 +82,7 @@ function Logo(props) {
                 strokeWidth="21.55"
                 strokeLinecap="round"
                 initial={{
-                    stroke: colors.reactBlue,
+                    stroke: "url(#initialColor)",
                     pathLength: 1,
                     pathOffset: 0,
                     pathSpacing: 1,
@@ -95,7 +95,7 @@ function Logo(props) {
                 strokeWidth="21.55"
                 strokeLinecap="round"
                 initial={{
-                    stroke: colors.reactBlue,
+                    stroke: "url(#initialColor)",
                     pathLength: 1,
                     pathOffset: 0,
                     pathSpacing: 1,
@@ -103,6 +103,10 @@ function Logo(props) {
                 animate={oval3}
             />
 
+            <linearGradient id="initialColor">
+                <stop offset="0%" stopColor={colors.reactBlue} />
+                <stop offset="100%" stopColor={colors.reactBlue} />
+            </linearGradient>
             <linearGradient id="motionGradientAnimated">
                 {/* This gradient’s <stop>s are animated */}
                 <motion.stop
@@ -115,7 +119,8 @@ function Logo(props) {
                         ],
                     }}
                     transition={{
-                        yoyo: Infinity,
+                        repeat: Infinity,
+                        repeatType: "reverse",
                         ease: "linear",
                         duration: 8,
                     }}
@@ -130,7 +135,8 @@ function Logo(props) {
                         ],
                     }}
                     transition={{
-                        yoyo: Infinity,
+                        repeat: Infinity,
+                        repeatType: "reverse",
                         ease: "linear",
                         duration: 8,
                     }}
@@ -145,7 +151,8 @@ function Logo(props) {
                         ],
                     }}
                     transition={{
-                        yoyo: Infinity,
+                        repeat: Infinity,
+                        repeatType: "reverse",
                         ease: "linear",
                         duration: 8,
                     }}
@@ -159,7 +166,7 @@ function Logo(props) {
                 fill="url(#motionGradientAnimated)"
                 animate={{ rotate: 360 }}
                 transition={{
-                    loop: Infinity,
+                    repeat: Infinity,
                     ease: "linear",
                     duration: 8,
                 }}
