@@ -32,12 +32,9 @@ function Logo(props) {
             pathOffset: [0, 1],
             stroke: "url(#motionGradientAnimated)",
             transition: {
-                duration: 1,
-                pathOffset: {
-                    duration: 0.5,
-                    ease: "linear",
-                    repeat: 1,
-                },
+                duration: 0.5,
+                ease: "linear",
+                repeat: 1,
             },
         })
         animationControls.start({
@@ -62,6 +59,64 @@ function Logo(props) {
             viewBox="0 0 841 595"
             {...props}
         >
+            <defs>
+                <linearGradient id="initialColor">
+                    <stop offset="0%" stopColor={colors.reactBlue} />
+                    <stop offset="100%" stopColor={colors.reactBlue} />
+                </linearGradient>
+                <linearGradient id="motionGradientAnimated">
+                    {/* This gradient’s <stop>s are animated */}
+                    <motion.stop
+                        offset="5%"
+                        animate={{
+                            stopColor: [
+                                colors.motionBlue,
+                                colors.motionMagenta,
+                                colors.motionPurple,
+                            ],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "linear",
+                            duration: 8,
+                        }}
+                    />
+                    <motion.stop
+                        offset="50%"
+                        animate={{
+                            stopColor: [
+                                colors.motionMagenta,
+                                colors.motionPurple,
+                                colors.motionBlue,
+                            ],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "linear",
+                            duration: 8,
+                        }}
+                    />
+                    <motion.stop
+                        offset="95%"
+                        animate={{
+                            stopColor: [
+                                colors.motionPurple,
+                                colors.motionBlue,
+                                colors.motionMagenta,
+                            ],
+                        }}
+                        transition={{
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "linear",
+                            duration: 8,
+                        }}
+                    />
+                </linearGradient>
+            </defs>
+
             <motion.path
                 d="M 538.429 94.524 C 581.86 119.563 564.798 230.268 500.319 341.79 C 435.839 453.312 348.36 523.419 304.929 498.38 C 261.497 473.341 278.56 362.636 343.039 251.114 C 407.518 139.592 494.997 69.484 538.429 94.524 Z"
                 fill="transparent"
@@ -102,62 +157,6 @@ function Logo(props) {
                 }}
                 animate={oval3}
             />
-
-            <linearGradient id="initialColor">
-                <stop offset="0%" stopColor={colors.reactBlue} />
-                <stop offset="100%" stopColor={colors.reactBlue} />
-            </linearGradient>
-            <linearGradient id="motionGradientAnimated">
-                {/* This gradient’s <stop>s are animated */}
-                <motion.stop
-                    offset="5%"
-                    animate={{
-                        stopColor: [
-                            colors.motionBlue,
-                            colors.motionMagenta,
-                            colors.motionPurple,
-                        ],
-                    }}
-                    transition={{
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "linear",
-                        duration: 8,
-                    }}
-                />
-                <motion.stop
-                    offset="50%"
-                    animate={{
-                        stopColor: [
-                            colors.motionMagenta,
-                            colors.motionPurple,
-                            colors.motionBlue,
-                        ],
-                    }}
-                    transition={{
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "linear",
-                        duration: 8,
-                    }}
-                />
-                <motion.stop
-                    offset="95%"
-                    animate={{
-                        stopColor: [
-                            colors.motionPurple,
-                            colors.motionBlue,
-                            colors.motionMagenta,
-                        ],
-                    }}
-                    transition={{
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "linear",
-                        duration: 8,
-                    }}
-                />
-            </linearGradient>
 
             <motion.circle
                 r="46"
