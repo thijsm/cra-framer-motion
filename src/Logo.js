@@ -119,10 +119,6 @@ function Logo(props) {
 
             <motion.path
                 d="M 538.429 94.524 C 581.86 119.563 564.798 230.268 500.319 341.79 C 435.839 453.312 348.36 523.419 304.929 498.38 C 261.497 473.341 278.56 362.636 343.039 251.114 C 407.518 139.592 494.997 69.484 538.429 94.524 Z"
-                fill="transparent"
-                strokeWidth="21.55"
-                strokeLinecap="round"
-                strokeLinejoin="round"
                 initial={{
                     stroke: "url(#initialColor)",
                     pathLength: 1,
@@ -133,9 +129,6 @@ function Logo(props) {
             />
             <motion.path
                 d="M 304.929 94.524 C 348.36 69.484 435.839 139.592 500.319 251.114 C 564.798 362.636 581.86 473.341 538.429 498.38 C 494.997 523.419 407.518 453.312 343.039 341.79 C 278.56 230.268 261.497 119.563 304.929 94.524 Z"
-                fill="transparent"
-                strokeWidth="21.55"
-                strokeLinecap="round"
                 initial={{
                     stroke: "url(#initialColor)",
                     pathLength: 1,
@@ -146,9 +139,6 @@ function Logo(props) {
             />
             <motion.path
                 d="M 188.152 296.761 C 188.152 246.682 292.693 206.085 421.652 206.085 C 550.61 206.085 655.152 246.682 655.152 296.761 C 655.152 346.839 550.61 387.436 421.652 387.436 C 292.693 387.436 188.152 346.839 188.152 296.761 Z"
-                fill="transparent"
-                strokeWidth="21.55"
-                strokeLinecap="round"
                 initial={{
                     stroke: "url(#initialColor)",
                     pathLength: 1,
