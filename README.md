@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%20with%20Framer%20Motion.gif"/>
 
+Here’s a [live version](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
+
+Don’t want to download and run this? Try the version on [CodeSandbox](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
+
 ## Available Scripts
 
 In the project directory, you can run:
