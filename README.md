@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)… and then some [Framer Motion](https://github.com/framer/motion) magic was added. The original React `logo.svg` is also replaced with one that’s more animatable.
 
-<img src="https://framerbook.com/wp-content/uploads/2020/10/CRA-with-Framer-Motion.gif"/>
+<img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%20with%20Framer%20Motion.gif"/>
 
 ## Available Scripts
 
