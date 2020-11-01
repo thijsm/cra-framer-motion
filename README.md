@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Here’s a [live version](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
 
-Don’t want to download and run this CRA project? There’s also a version on [<img src="https://raw.githubusercontent.com/thijsm/public/master/CodeSandbox-dark.svg" width="100"/>](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
+Don’t want to download and run this CRA project? There’s also a version on [<img src="https://raw.githubusercontent.com/thijsm/public/master/CodeSandbox-dark.svg" width="150" align="middle" />](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
 
 ## Available Scripts
 
