@@ -41,6 +41,21 @@ You can animate most of an element’s attributes, and a `<motion.path>` even ha
 -   `pathSpacing`
 -   `pathOffset`
 
+Here’s the first one of the ovals:
+
+```jsx
+<motion.path
+    d="M 538.429 94.524 …"
+    initial={{
+        stroke: "url(#initialColor)",
+        pathLength: 1,
+        pathOffset: 0,
+        pathSpacing: 1,
+    }}
+    animate={oval1}
+/>
+```
+
 Framer Motion’s [`useAnimation()`](https://www.framer.com/api/motion/animation/#component-animation-controls) hook is used to run a [sequence](https://www.framer.com/api/motion/animation/#sequencing) of animations on the three `<motion.path>`s.
 
 ### First animation: shorten the path
