@@ -1,74 +1,205 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)… and then some [Framer Motion](https://github.com/framer/motion) magic was added. The original React `logo.svg` is also replaced with one that’s more animatable.
+An (more) animated version of Create React App’s [default template](https://cra-default.netlify.app).
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%20with%20Framer%20Motion.gif"/>
 
-Here’s a [live version](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
+### 🌍 Here’s a [live version](https://csb-uwdyf.netlify.app/).
 
-Don’t want to download and run this CRA project? There’s also a version on [<img src="https://raw.githubusercontent.com/thijsm/public/master/CodeSandbox-dark.svg" width="120" align="bottom" />](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx).
+### 📦 Don’t want to download and run this? Try the [CodeSandbox](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx) version.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## ⚡️ Running this project
 
-### `yarn start`
+This is a common [Create React App](https://create-react-app.dev/) project (with [Framer Motion](https://www.framer.com/motion/) added as a dependency).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To run from this project, you:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+-   download the ZIP archive or clone the repository;
+-   navigate inside the project’s directory in the Terminal and type:
 
-### `yarn test`
+`npm install`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+… to reinstall the Node packages.
 
-### `yarn build`
+And then you’re ready to kick off the development server:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm start`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+… which will open the project on [http://localhost:3000](http://localhost:3000) in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Note that you must have [Node.js and NPM](https://nodejs.org/en/download/) installed.
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🤔 How is the React logo animated?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In Framer Motion, you use [motion components](https://www.framer.com/api/motion/component/) instead of common HTML and SVG elements. The SVG with the logo contains three `<motion.path>`s (the ovals) and a `<motion.circle>` (or two) in the center.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+You can animate most of an element’s attributes, and a `<motion.path>` even has a [few extra properties](https://www.framer.com/api/motion/component/#svg-path):
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   `pathLength`
+-   `pathSpacing`
+-   `pathOffset`
 
-## Learn More
+Framer Motion’s [`useAnimation()`](https://www.framer.com/api/motion/animation/#component-animation-controls) hook is used to run a [sequence](https://www.framer.com/api/motion/animation/#sequencing) of animations on the three `<motion.path>`s.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### First animation: shorten the path
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The first animation shortens the path (to 5%) by changing its `pathLength`. At the same time, the `pathOffset` is moved forward so that the animation runs clockwise.
 
-### Code Splitting
+```jsx
+  async function sequence(animationControls, delay = 0) {
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+    await animationControls.start({
+      pathLength: 0.05,
+      pathOffset: 1,
+      pathSpacing: 0.95,
+      transition: {
+        delay: delay,
+        duration: 1,
+        ease: "easeIn"
+      }
+    });
+    …
+```
 
-### Analyzing the Bundle Size
+(The change to `pathSpacing` is needed to make the dash reappear at the beginning of the path.)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+<img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%201.gif"/>
 
-### Making a Progressive Web App
+### Second animation: travel along the path
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Speeding the _dash_ along the path is easy: you just animate the `pathOffset`.
 
-### Advanced Configuration
+```jsx
+    …
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+    await animationControls.start({
+      pathOffset: [0, 1],
+      stroke: "url(#motionGradientAnimated)",
+      transition: {
+        duration: 0.5,
+        ease: "linear",
+        repeat: 1
+      }
+    });
 
-### Deployment
+    …
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+This animation has a [`repeat`](https://www.framer.com/api/motion/types/#repeat.repeat) of `1` so that it runs twice.
 
-### `yarn build` fails to minify
+<img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%202.gif"/>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Third animation: grow the path
+
+Change `pathLength` to 100% to make the dash grow back to the full length of the path.
+
+```jsx
+    …
+
+    animationControls.start({
+      pathOffset: [0, 0],
+      pathSpacing: [1, 1],
+      pathLength: [0.05, 1],
+      transition: {
+        duration: 1.5,
+        ease: "easeOut"
+      }
+    });
+  }
+```
+
+<img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%203.gif"/>
+
+### The central circle
+
+The `<motion.circle>` in the center contains the same animated gradient as the paths and rotates continuously.
+
+```jsx
+<motion.circle
+    r="46"
+    cx="422"
+    cy="297"
+    fill="url(#motionGradientAnimated)"
+    animate={{ rotate: 360 }}
+    transition={{
+        loop: Infinity,
+        ease: "linear",
+        duration: 8,
+    }}
+/>
+```
+
+It’s only not visible initially because it’s covered by _another_ `<motion.circle>` in React blue that fades out after a [`delay`](https://www.framer.com/api/motion/types/#orchestration.delay).
+
+```jsx
+<motion.circle
+    r="46"
+    cx="422"
+    cy="297"
+    fill="#61dafb"
+    initial={{ fillOpacity: 1 }}
+    animate={{ fillOpacity: 0 }}
+    transition={{
+        delay: 3,
+        duration: 2,
+    }}
+/>
+```
+
+### The gradient
+
+Yes, the SVG `<linearGradient>` is also animated! Or rather: its `<motion.stop>`s are. Each stop runs through an array ([keyframes](https://www.framer.com/api/motion/examples/#keyframes)) of colors.
+
+```jsx
+<linearGradient id="motionGradientAnimated">
+    <motion.stop
+        offset="5%"
+        animate={{
+            stopColor: [
+                colors.motionBlue,
+                colors.motionMagenta,
+                colors.motionPurple,
+            ],
+        }}
+        transition={{
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "linear",
+            duration: 8,
+        }}
+    />
+    …
+</linearGradient>
+```
+
+### Spinning the icon
+
+While all this happens, the whole icon spins.
+
+That’s _not_ a Framer Motion animation. The original CRA template has a CSS @keyframes animation applied to the `<svg>`’s `App-logo` class, which I just left in.
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+```
+
+### More in the Framer book
+
+That’s the gist of it. There’s a more detailed, step-by-step explanation in the Framer book (paid subscription):
+
+-   [Animating an SVG Path’s Stroke](https://framerbook.com/x/framer-motion/svg-animations/animating-an-svg-paths-stroke/#motionized-cra-project)
+-   [Animating SVG Gradients](https://framerbook.com/x/framer-motion/svg-animations/animating-svg-gradients/#animating-a-gradients-color-stops)
