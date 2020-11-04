@@ -1,10 +1,10 @@
-An (more) animated version of Create React App’s [default template](https://cra-default.netlify.app).
+An (more) animated version of Create React App’s [default template](https://default-cra.netlify.app/).
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%20with%20Framer%20Motion.gif"/>
 
-### 🌍 Here’s a [live version](https://csb-uwdyf.netlify.app/).
+### 🌍 Here’s a [live version](https://cra-framer-motion.netlify.app/).
 
-### 📦 Don’t want to download and run this? Try the [CodeSandbox](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx) version.
+### 🗄️ Don’t want to download and run this? 📦 Try the [CodeSandbox](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx) version.
 
 ---
 
