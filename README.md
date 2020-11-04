@@ -214,7 +214,7 @@ That’s _not_ a Framer Motion animation. The original CRA template has a CSS @k
 
 ### More in the Framer book
 
-That’s the gist of it. There’s a more detailed, step-by-step explanation in the Framer book (paid subscription):
+That’s the gist of it. There are more detailed explanations in the Framer book (paid subscription):
 
 -   [Animating an SVG Path’s Stroke](https://framerbook.com/x/framer-motion/svg-animations/animating-an-svg-paths-stroke/#motionized-cra-project)
 -   [Animating SVG Gradients](https://framerbook.com/x/framer-motion/svg-animations/animating-svg-gradients/#animating-a-gradients-color-stops)
