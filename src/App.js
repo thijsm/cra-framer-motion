@@ -1,4 +1,3 @@
-import React from "react"
 import { motion } from "framer-motion"
 
 import "./App.css"
@@ -39,8 +38,8 @@ function App() {
                           ${colors.motionBlue} 20%,
                           ${colors.motionMagenta}, 
                           ${colors.motionPurple})`,
-                        webkitBackgroundClip: "text",
-                        webkitTextFillColor: "transparent",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
                         textDecorationColor: colors.motionPurple,
                         marginTop: 5,
                     }}
