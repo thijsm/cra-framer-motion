@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
 
 function Logo(props) {
@@ -15,7 +16,7 @@ function Logo(props) {
     }
 
     // This function runs an animation sequence on an oval’s AnimationControls
-    // https://www.framer.com/api/motion/animation/#sequencing
+    // https://www.framer.com/motion/use-animation-controls/#sequence
     async function sequence(animationControls, delay = 0) {
         await animationControls.start({
             pathLength: 0.05,
@@ -47,10 +48,12 @@ function Logo(props) {
         })
     }
 
-    // Triggering each oval’s animation sequence
-    sequence(oval1, 2)
-    sequence(oval2, 2.5)
-    sequence(oval3, 3)
+    // Triggering each oval’s animation sequence after the component has mounted
+    useEffect(() => {
+        sequence(oval1, 2);
+        sequence(oval2, 2.5);
+        sequence(oval3, 3);
+    }, []);
 
     return (
         <motion.svg
