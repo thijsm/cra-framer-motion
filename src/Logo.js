@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { motion, useAnimation } from "framer-motion"
 
 function Logo(props) {
-    // Imperative AnimationControls for the three ovals
+    // Imperative animation controls for the three ovals
     // https://www.framer.com/api/motion/animation/#animation-controls
     const oval1 = useAnimation()
     const oval2 = useAnimation()
@@ -15,7 +15,7 @@ function Logo(props) {
         motionPurple: "#70f",
     }
 
-    // This function runs an animation sequence on an oval’s AnimationControls
+    // This function runs an animation sequence on an oval’s animation controls
     // https://www.framer.com/motion/use-animation-controls/#sequence
     async function sequence(animationControls, delay = 0) {
         await animationControls.start({
