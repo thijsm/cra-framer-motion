@@ -33,9 +33,9 @@ Note that you must have [Node.js and NPM](https://nodejs.org/en/download/) insta
 
 ## 🤔 How is the React logo animated?
 
-In Framer Motion, you use [motion components](https://www.framer.com/api/motion/component/) instead of common HTML and SVG elements. The SVG with the logo contains three `<motion.path>`s (the ovals) and a `<motion.circle>` (or two) in the center.
+In Framer Motion, you use [motion components](https://www.framer.com/motion/component/) instead of common HTML and SVG elements. The SVG with the logo contains three `<motion.path>`s (the ovals) and a `<motion.circle>` (or two) in the center.
 
-You can animate most of an element’s attributes, and a `<motion.path>` even has a [few extra properties](https://www.framer.com/api/motion/component/#svg-path):
+You can animate most of an element’s attributes, and a `<motion.path>` even has a [few extra properties](https://www.framer.com/motion/component/###svg-line-drawing):
 
 -   `pathLength`
 -   `pathSpacing`
@@ -56,7 +56,7 @@ Here’s the first one of the ovals:
 />
 ```
 
-Framer Motion’s [`useAnimation()`](https://www.framer.com/api/motion/animation/#component-animation-controls) hook is used to run a [sequence](https://www.framer.com/api/motion/animation/#sequencing) of animations on the three `<motion.path>`s.
+Framer Motion’s [`useAnimationControls()`](https://www.framer.com/motion/use-animation-controls/) hook is used to run a [sequence](https://www.framer.com/motion/use-animation-controls/#sequence) of animations on the three `<motion.path>`s.
 
 ### First animation: shorten the path
 
@@ -102,7 +102,7 @@ Speeding the _dash_ along the path is easy: you just animate the `pathOffset`.
     …
 ```
 
-This animation has a [`repeat`](https://www.framer.com/api/motion/types/#repeat.repeat) of `1` so that it runs twice.
+This animation has a [`repeat`](https://www.framer.com/motion/transition/###repeat) of `1` so that it runs twice.
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%202.gif"/>
 
@@ -146,7 +146,7 @@ The `<motion.circle>` in the center contains the same animated gradient as the p
 />
 ```
 
-It’s only not visible initially because it’s covered by _another_ `<motion.circle>` in React blue that fades out after a [`delay`](https://www.framer.com/api/motion/types/#orchestration.delay).
+It’s only not visible initially because it’s covered by _another_ `<motion.circle>` in React blue that fades out after a [`delay`](https://www.framer.com/motion/transition/###delay).
 
 ```jsx
 <motion.circle
@@ -165,7 +165,7 @@ It’s only not visible initially because it’s covered by _another_ `<motion.c
 
 ### The gradient
 
-Yes, the SVG `<linearGradient>` is also animated! Or rather: its `<motion.stop>`s are. Each stop runs through an array ([keyframes](https://www.framer.com/api/motion/examples/#keyframes)) of colors.
+Yes, the SVG `<linearGradient>` is also animated! Or rather: its `<motion.stop>`s are. Each stop runs through an array ([keyframes](https://www.framer.com/motion/examples/#keyframes)) of colors.
 
 ```jsx
 <linearGradient id="motionGradientAnimated">
@@ -216,5 +216,5 @@ That’s _not_ a Framer Motion animation. The original CRA template has a CSS @k
 
 That’s the gist of it. There are more detailed explanations in the Framer book (paid subscription):
 
--   [Animating an SVG Path’s Stroke](https://framerbook.com/x/framer-motion/svg-animations/animating-an-svg-paths-stroke/#motionized-cra-project)
--   [Animating SVG Gradients](https://framerbook.com/x/framer-motion/svg-animations/animating-svg-gradients/#animating-a-gradients-color-stops)
+-   [Animating an SVG Path’s Stroke](https://framerbook.com/framer-motion/svg-animations/animating-an-svg-paths-stroke/#motionized-cra-project)
+-   [Animating SVG Gradients](https://framerbook.com/framer-motion/svg-animations/animating-svg-gradients/#animating-a-gradients-color-stops)
