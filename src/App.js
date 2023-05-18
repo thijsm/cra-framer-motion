@@ -26,7 +26,7 @@ function App() {
                 </motion.p>
                 <a
                     className="App-link"
-                    href="https://reactjs.org"
+                    href="https://react.dev/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -43,7 +43,7 @@ function App() {
                         textDecorationColor: colors.motionPurple,
                         marginTop: 5,
                     }}
-                    href="https://www.framer.com/docs/"
+                    href="https://www.framer.com/motion/"
                     target="_blank"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
