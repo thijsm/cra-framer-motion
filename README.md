@@ -4,7 +4,7 @@ An (more) animated version of Create React App’s [default template](https://de
 
 ### 🌍 Here’s a [live version](https://cra-framer-motion.netlify.app/).
 
-### 🗄️ Don’t want to download and run this? 📦 Try the [CodeSandbox](https://codesandbox.io/s/uwdyf?file=/src/Logo.jsx) version.
+### 🗄️ Don’t want to download and run this? 📦 Try the [CodeSandbox](https://codesandbox.io/s/ujeswi?file=/src/Logo.jsx) version.
 
 ---
 
