@@ -140,9 +140,9 @@ The `<motion.circle>` in the center contains the same animated gradient as the p
     fill="url(#motionGradientAnimated)"
     animate={{ rotate: 360 }}
     transition={{
-        loop: Infinity,
+        repeat: Infinity,
         ease: "linear",
-        duration: 8,
+        duration: 8
     }}
 />
 ```
