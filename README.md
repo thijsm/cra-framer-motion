@@ -52,30 +52,33 @@ Here’s the first one of the ovals:
         pathOffset: 0,
         pathSpacing: 1,
     }}
-    animate={oval1}
+    ref={scopeOval1}
 />
 ```
 
-Framer Motion’s [`useAnimationControls()`](https://www.framer.com/motion/use-animation-controls/) hook is used to run a [sequence](https://www.framer.com/motion/use-animation-controls/#sequence) of animations on the three `<motion.path>`s.
+Framer Motion’s [`useAnimate()`](https://www.framer.com/motion/use-animate/) hook is used to run a [sequence](https://www.framer.com/motion/animate-function/##animate-sequences) of animations on the three `<motion.path>`s.
 
 ### First animation: shorten the path
 
 The first animation shortens the path (to 5%) by changing its `pathLength`. At the same time, the `pathOffset` is moved forward so that the animation runs clockwise.
 
 ```jsx
-  async function sequence(animationControls, delay = 0) {
-
-    await animationControls.start({
-      pathLength: 0.05,
-      pathOffset: 1,
-      pathSpacing: 0.95,
-      transition: {
-        delay: delay,
-        duration: 1,
-        ease: "easeIn"
-      }
-    });
-    …
+    function sequence(scope, animate, delay = 0) {
+        animate([
+            [
+                scope.current,
+                {
+                    pathLength: 0.05,
+                    pathOffset: 1,
+                    pathSpacing: 0.95
+                },
+                {
+                    delay: delay,
+                    duration: 1,
+                    ease: "easeIn"
+                }
+            ],
+            …
 ```
 
 (The change to `pathSpacing` is needed to make the dash reappear at the beginning of the path.)
@@ -87,22 +90,21 @@ The first animation shortens the path (to 5%) by changing its `pathLength`. At t
 Speeding the _dash_ along the path is easy: you just animate the `pathOffset`.
 
 ```jsx
-    …
-
-    await animationControls.start({
-      pathOffset: [0, 1],
-      stroke: "url(#motionGradientAnimated)",
-      transition: {
-        duration: 0.5,
-        ease: "linear",
-        repeat: 1
-      }
-    });
-
-    …
+            …
+            [
+                scope.current,
+                { pathOffset: [0, 1] },
+                { duration: 0.5, ease: "linear" }
+            ],
+            [
+                scope.current,
+                { pathOffset: [0, 1] },
+                { duration: 0.5, ease: "linear" }
+            ],
+            …
 ```
 
-This animation has a [`repeat`](https://www.framer.com/motion/transition/###repeat) of `1` so that it runs twice.
+This animation runs twice.
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%202.gif"/>
 
@@ -111,18 +113,17 @@ This animation has a [`repeat`](https://www.framer.com/motion/transition/###repe
 Change `pathLength` to 100% to make the dash grow back to the full length of the path.
 
 ```jsx
-    …
-
-    animationControls.start({
-      pathOffset: [0, 0],
-      pathSpacing: [1, 1],
-      pathLength: [0.05, 1],
-      transition: {
-        duration: 1.5,
-        ease: "easeOut"
-      }
-    });
-  }
+            …
+            [
+                scope.current,
+                {
+                    pathOffset: [0, 0],
+                    pathSpacing: [1, 1],
+                    pathLength: [0.05, 1]
+                },
+                { duration: 1.5, ease: "easeOut" }
+            ]
+        ]);
 ```
 
 <img src="https://raw.githubusercontent.com/thijsm/public/master/CRA%203.gif"/>
